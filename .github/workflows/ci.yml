@@ -6,6 +6,11 @@ on:
   pull_request:
     branches: [main]
 
+permissions:
+  contents: read
+  checks: write
+  pull-requests: write
+
 jobs:
   build:
     name: Lint, typecheck, test, build
@@ -39,7 +44,20 @@ jobs:
         run: npm run typecheck
 
       - name: Test
-        run: npm test
+        run: npm run test:ci
+
+      - name: Publish Test Results
+        # Runs even if the Test step fails, so failing tests show up in the
+        # PR UI as a separate "Vitest Results" check with the full test list.
+        # fail-on-error: false → this step itself never fails the job;
+        # the Test step above already determines pass/fail of the job.
+        if: always()
+        uses: dorny/test-reporter@v1
+        with:
+          name: Vitest Results
+          path: test-results.junit.xml
+          reporter: jest-junit
+          fail-on-error: false
 
       - name: Build
         run: npm run build

@@ -1,0 +1,20 @@
+# Auto-detect text files and normalize line endings to LF in the repo.
+# This kills the CRLF/LF noise on Windows where Prettier writes LF but
+# git autocrlf wants CRLF — git status was flagging files as "modified"
+# without any real content change.
+* text=auto eol=lf
+
+# Binary assets — never touch line endings
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
+*.eot binary
+*.zip binary
+*.gz binary
+*.pdf binary
