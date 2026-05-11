@@ -25,6 +25,7 @@ npm run format:check  # Prettier --check
 npm run typecheck  # tsc -b (project references)
 npm test           # Vitest run (одноразово)
 npm run test:watch # Vitest в watch-режиме
+npm run coverage   # Vitest run + V8 coverage report (caталог coverage/, в .gitignore)
 ```
 
 ## Status
