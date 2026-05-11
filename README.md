@@ -1,5 +1,7 @@
 # claudetest — Todo App
 
+[![CI](https://github.com/loverflower/claudetest/actions/workflows/ci.yml/badge.svg)](https://github.com/loverflower/claudetest/actions/workflows/ci.yml)
+
 Обучающий проект для прогонки AI-workflow по `AI manual for individual exploration.md`. Простое to-do приложение на React + TypeScript + Tailwind CSS + Vitest. Реализуется тикетами SCRUM-5 .. SCRUM-8 из Jira-борды.
 
 ## Stack
@@ -27,9 +29,15 @@ npm run test:watch # Vitest в watch-режиме
 
 ## Status
 
-- **SCRUM-5** — базовый CRUD (in progress)
+- **SCRUM-5** ✅ merged — базовый CRUD
+- **SCRUM-9** — unit-тесты для useTodos + компонентов (next)
 - **SCRUM-8** — localStorage (queued)
 - **SCRUM-6** — фильтрация (queued)
 - **SCRUM-7** — сортировка по имени (queued)
+
+## CI
+
+Каждый PR в `main` проходит через GitHub Actions workflow `.github/workflows/ci.yml`:
+`npm ci` → `lint` → `format:check` → `typecheck` → `test` → `build`. Все шаги должны быть зелёными для merge.
 
 См. `AI_WORKFLOW_PLAN.md` для общего workflow и `docs/specs/SCRUM-5.md` для текущей спеки.
